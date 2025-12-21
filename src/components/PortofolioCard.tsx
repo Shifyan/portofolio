@@ -1,20 +1,45 @@
+"use client"; // Pastikan menggunakan client component
+
 import Image from "next/image";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Separator } from "./ui/separator";
+import { motion } from "framer-motion"; // Import framer-motion
+
 export default function PortofolioCard() {
   return (
-    <div>
-      <Card className="w-[390px]">
+    // Kita gunakan motion.div sebagai wrapper utama untuk menangkap hover state
+    <motion.div
+      className="w-[390px]"
+      initial="rest"
+      whileHover="hovered"
+      animate="rest"
+    >
+      <Card>
         <CardContent>
-          <div className="flex justify-center rounded-xl overflow-hidden mb-6">
-            <Image
-              src={"/images/mock-image-porto.jpg"}
-              alt="Mock"
-              width={388}
-              height={388}
-            />
+          {/* Container gambar dengan perspective agar efek 3D terlihat nyata */}
+          <div
+            className="flex justify-center rounded-xl overflow-hidden mb-6"
+            style={{ perspective: "1000px" }}
+          >
+            <motion.div
+              variants={{
+                rest: { rotateY: 0 },
+                hovered: { rotateY: 180 },
+              }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="w-full h-full flex justify-center"
+            >
+              <Image
+                src={"/images/mock-image-porto.jpg"}
+                alt="Mock"
+                width={388}
+                height={388}
+                className="w-full h-auto"
+              />
+            </motion.div>
           </div>
+
           <div className="mb-4">
             <h4 className="text-lg font-bold mb-4">
               Helo World -{" "}
@@ -29,12 +54,27 @@ export default function PortofolioCard() {
           </div>
           <Separator />
           <div className="flex gap-2 flex-wrap mt-6">
-            <Badge variant={"outline"}>Shifyan</Badge>
-            <Badge variant={"outline"}>Shifyan</Badge>
-            <Badge variant={"outline"}>Shifyan</Badge>
+            <Badge
+              variant={"outline"}
+              className="text-[#475467] font-medium text-xs py-1 px-3"
+            >
+              Shifyan
+            </Badge>
+            <Badge
+              variant={"outline"}
+              className="text-[#475467] font-medium text-xs py-1 px-3"
+            >
+              Shifyan
+            </Badge>
+            <Badge
+              variant={"outline"}
+              className="text-[#475467] font-medium text-xs py-1 px-3"
+            >
+              Shifyan
+            </Badge>
           </div>
         </CardContent>
       </Card>
-    </div>
+    </motion.div>
   );
 }
