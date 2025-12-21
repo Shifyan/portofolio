@@ -1,8 +1,8 @@
 import { Badge } from "@/components/ui/badge";
 import { ActionButton } from "@/components/ActionButton";
 import Marquee from "react-fast-marquee";
-import PortofolioCard from "@/components/PortofolioCard";
-import { Button } from "@/components/ui/button";
+import PortofolioSection from "@/components/PortofolioSection";
+import ToolboxSection from "@/components/ToolboxSection";
 export default function HomePage() {
   const imageRoute = [
     { src: "/logos/html.svg", alt: "Next.js logo" },
@@ -21,13 +21,22 @@ export default function HomePage() {
     <div>
       <div className="py-10">
         <div className="flex justify-center gap-2 text-[#475467] mb-4">
-          <Badge variant="outline" className="text-[#475467]">
+          <Badge
+            variant="outline"
+            className="text-[#475467] font-medium text-xs py-1 px-3"
+          >
             React Developer
           </Badge>
-          <Badge variant="outline" className="text-[#475467]">
+          <Badge
+            variant="outline"
+            className="text-[#475467] font-medium text-xs py-1 px-3"
+          >
             Front-End Developer
           </Badge>
-          <Badge variant="outline" className="text-[#475467]">
+          <Badge
+            variant="outline"
+            className="text-[#475467] font-medium text-xs py-1 px-3"
+          >
             Back-End Developer
           </Badge>
         </div>
@@ -59,7 +68,7 @@ export default function HomePage() {
           </h3>
         </div>
         {/* Marquee Logo */}
-        <div className="mt-10 mb-2 px-15">
+        <div className="mt-16 mb-2 px-15">
           <Marquee
             gradient={true}
             speed={50}
@@ -81,24 +90,10 @@ export default function HomePage() {
       </div>
       {/* Portofolio Section */}
       <div className="py-15">
-        <div className=" text-center mb-15">
-          <h2 className="text-[46px] font-semibold pb-6">Portofolio</h2>
-          <h3 className="text-[18px] font-semibold text-[#667085]">
-            Check out what we{"'"}ve been working on lately
-          </h3>
-        </div>
-        <div className="flex justify-center gap-4 ">
-          <PortofolioCard />
-          <PortofolioCard />
-        </div>
-        <div className="mt-6 flex justify-center">
-          <Button
-            variant={"outline"}
-            className="rounded-[78px] py-3 px-[42px] font-semibold hover:cursor-pointer"
-          >
-            View All
-          </Button>
-        </div>
+        <PortofolioSection />
+      </div>
+      <div className="py-16">
+        <ToolboxSection />
       </div>
     </div>
   );
