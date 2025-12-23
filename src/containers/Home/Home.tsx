@@ -3,6 +3,7 @@ import { ActionButton } from "@/components/ActionButton";
 import Marquee from "react-fast-marquee";
 import PortofolioSection from "@/components/PortofolioSection";
 import ToolboxSection from "@/components/ToolboxSection";
+import FooterSection from "@/components/FooterSection";
 export default function HomePage() {
   const imageRoute = [
     { src: "/logos/html.svg", alt: "Next.js logo" },
@@ -94,6 +95,9 @@ export default function HomePage() {
       </div>
       <div className="py-16">
         <ToolboxSection />
+      </div>
+      <div className="py-16 px-20">
+        <FooterSection />
       </div>
     </div>
   );
