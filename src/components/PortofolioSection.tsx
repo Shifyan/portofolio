@@ -1,7 +1,12 @@
+"use client";
 import PortofolioCard from "./PortofolioCard";
 import { Button } from "./ui/button";
+import { PAGE_ROUTES } from "@/lib/routes";
+import { useRouter } from "next/navigation";
 
 export default function PortofolioSection() {
+  const router = useRouter();
+
   return (
     <div>
       <div className=" text-center mb-15">
@@ -18,6 +23,7 @@ export default function PortofolioSection() {
         <Button
           variant={"outline"}
           className="rounded-[78px] py-3 px-[42px] font-semibold hover:cursor-pointer"
+          onClick={() => router.push(PAGE_ROUTES.PORTOFOLIO)}
         >
           View All
         </Button>
