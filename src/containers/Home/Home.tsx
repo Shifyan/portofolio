@@ -1,23 +1,29 @@
+"use client"; // 1. Wajib tambahkan ini di baris paling atas
+
 import { Badge } from "@/components/ui/badge";
 import { ActionButton } from "@/components/ActionButton";
 import Marquee from "react-fast-marquee";
 import PortofolioSection from "@/components/PortofolioSection";
 import ToolboxSection from "@/components/ToolboxSection";
 import FooterSection from "@/components/FooterSection";
+// 2. Import motion
+import { motion } from "framer-motion";
+
 export default function HomePage() {
   const imageRoute = [
-    { src: "/logos/html.svg", alt: "Next.js logo" },
-    { src: "/logos/css.svg", alt: "Next.js logo" },
-    { src: "/logos/javascript.svg", alt: "Next.js logo" },
-    { src: "/logos/bootstrap.svg", alt: "Next.js logo" },
-    { src: "/logos/tailwindcss.svg", alt: "Next.js logo" },
+    { src: "/logos/html.svg", alt: "HTML logo" },
+    { src: "/logos/css.svg", alt: "CSS logo" },
+    { src: "/logos/javascript.svg", alt: "JavaScript logo" },
+    { src: "/logos/bootstrap.svg", alt: "Bootstrap logo" },
+    { src: "/logos/tailwindcss.svg", alt: "Tailwind CSS logo" },
     { src: "/logos/nodejs.svg", alt: "Node.js logo" },
     { src: "/logos/react.svg", alt: "React logo" },
     { src: "/logos/nextjs.svg", alt: "Next.js logo" },
-    { src: "/logos/mysql.svg", alt: "Next.js logo" },
-    { src: "/logos/postgresql.svg", alt: "Next.js logo" },
-    { src: "/logos/mongodb.svg", alt: "Next.js logo" },
+    { src: "/logos/mysql.svg", alt: "MySQL logo" },
+    { src: "/logos/postgresql.svg", alt: "PostgreSQL logo" },
+    { src: "/logos/mongodb.svg", alt: "MongoDB logo" },
   ];
+
   return (
     <div>
       <div className="py-10">
@@ -57,6 +63,7 @@ export default function HomePage() {
           <ActionButton text="Contact Me" />
         </div>
       </div>
+
       {/* Section Technologies */}
       <div className="py-15">
         <div>
@@ -75,20 +82,40 @@ export default function HomePage() {
             speed={50}
             autoFill={true}
             gradientWidth={380}
+            pauseOnHover={false} // Atur ke false agar marquee tidak berhenti
           >
             {imageRoute.map((image, index) => (
-              <div key={index} className="h-30 flex items-center px-10">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+              <div
+                key={index}
+                className="h-30 flex items-center px-10"
+                style={{ perspective: "1000px" }} // Menjaga kedalaman 3D saat berputar
+              >
+                <motion.img
                   src={image.src}
                   alt={image.alt}
-                  className="h-17 w-auto object-contain opacity-70 hover:opacity-100 transition"
+                  className="h-17 w-auto object-contain cursor-pointer"
+                  initial={{ opacity: 0.7, rotateY: 0 }}
+                  whileHover={{
+                    opacity: 1,
+                    rotateY: 360,
+                    transition: {
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 20,
+                    },
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 20,
+                  }}
                 />
               </div>
             ))}
           </Marquee>
         </div>
       </div>
+
       {/* Portofolio Section */}
       <div className="py-15">
         <PortofolioSection />
